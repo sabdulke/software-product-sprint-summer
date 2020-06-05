@@ -1,18 +1,120 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sarah Abdulkerim | Portfolio</title>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9bxbeKJgcnN8iVIWcrWTEITev5TbRQBI"></script>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+  
+    <body onload = "onLoadFuncs()"></body>
+
+    <div class="parallax">
+
+        <div class = "caption">
+            <img src = "images/profile.jpg"></img>
+            <br><br><br>
+            <span class = "border">
+                Sarah Abdulkerim.<br><br><br>Wellesley College | Computer Science
+            </span>
+            <h3><a href = '#intro'>Introduction</a></h3>
+        </div>
     </div>
-  </body>
+
+    <div class = "info" id = "intro">
+        <h3>
+            Welcome to my portfolio! <br>
+            I am Sarah Abdulkerim. <br>
+            I am a student studying Computer Science at Wellesley College.<br>
+            <a href = '#about'>About</a>
+        </h3>
+    </div>
+
+    <div class="parallax2"></div>
+
+    <div class = "info" id = "about">
+        <h3>About </h3>
+            <p> My name is Sarah Abdulkerim. I am a student studying Computer Science at Wellesley College.
+                I have experience programming in Python, C, and Java. As a hobby, I enjoy drawing with 
+                graphite and colored pencil media. I am passionate about software development and am interested 
+                in contributing and broadening both my back-end and front-end skills.  
+            </p>
+        <h3><a href = '#cs'>Computer Science Portfolio</a></h3>
+    </div>
+
+    <div class="parallax3"></div>
+
+
+    <div class = "info" id ="cs">
+        <h3>
+            Computer Science Portfolio
+            <h2> Coursework: </h2>
+            <p> Computer Programming & Problem Solving, Computation Structures, Real-Time Systems and Software, Data Structures, Combinatorics & Graph Theory, Introduction to Algorithms</p>
+            <p> Backend Programming Languages: Python, Java, Node.js, C </p>
+            <p> Frontend Programming Languages: HTML, CSS, Javascript </p>
+            <h2> Projects: </h2>
+            <div id = "maps"></div>
+            <a href = "#art"> Art Portfolio </a>
+        </h3>
+    </div>
+
+
+    <div class="parallax4"></div>
+
+    <div class = "info" id ="art">
+        <h3>
+            Art Portfolio
+            <!-- Container for the image gallery -->
+            <div class="slideshow-container">
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+
+            <br>
+
+            <div id = "show" style="text-align:center"></div>
+            
+
+            <a href = "#com"> Comments </a>
+
+        </h3>
+    </div> 
+
+    <div class="parallax5"></div>
+
+    <div class = "info" id ="com">
+        <h3>
+            Comments
+
+            <div class = "up"><span><a href= "#">&#8593;</a></span></div>
+            <div class = "messagePopUp" id = "msgForm">
+                <form action = "/comment" method = "POST" class = "form-container">
+                    <label for = "msg"><b>Comment here</b></label>
+                    <textarea name = "text-input"> Leave your comments here. </textarea>
+                    <button type = "submit" class = "btn" /> Send </button>
+                </form>
+            </div>
+
+            <ul id= "history"></ul>
+
+        </h3>
+    </div>
+
+    <div class="parallax6"></div>
+
+        <div class = "info" id ="cont">
+            <h3>
+                Contact
+                <p> Email: abdulkerim.sarah@gmail.com </p>
+            </h3>
+        </div>
+
+    </div>
+
 </html>
