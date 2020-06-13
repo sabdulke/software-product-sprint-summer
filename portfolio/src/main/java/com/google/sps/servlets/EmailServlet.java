@@ -29,9 +29,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that handles comment data*/
-@WebServlet("/comment")
-public class DataServlet extends HttpServlet {
-    private ArrayList<String> messages;
+@WebServlet("/email")
+public class EmailServlet extends HttpServlet {
+//     private ArrayList<String> messages;
     private DatastoreService datastore;
 
     @Override
@@ -39,33 +39,36 @@ public class DataServlet extends HttpServlet {
         datastore = DatastoreServiceFactory.getDatastoreService();
     }
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Query query = new Query("comment").addSort("timestamp", SortDirection.DESCENDING);
-        messages = new ArrayList<String>();
-        PreparedQuery results = datastore.prepare(query);
-        for (Entity comment: results.asIterable()){
-            String temp = (String) comment.getProperty("comment");
-            messages.add(temp);
-        }
-        response.setContentType("application/json");
-        Gson gson = new Gson();
-        String json = gson.toJson(messages);
-        response.getWriter().println(json);
-  }
+//     @Override
+//     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//         Query query = new Query("comment").addSort("timestamp", SortDirection.DESCENDING);
+//         messages = new ArrayList<String>();
+//         PreparedQuery results = datastore.prepare(query);
+//         for (Entity comment: results.asIterable()){
+//             String temp = (String) comment.getProperty("comment");
+//             messages.add(temp);
+//         }
+//         response.setContentType("application/json");
+//         Gson gson = new Gson();
+//         String json = gson.toJson(messages);
+//         response.getWriter().println(json);
+//   }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
-        String comment = request.getParameter("text-input");
+        String address = request.getParameter("address");
+        String message = request.getParameter("message");
 
-        Entity commentEntity = new Entity("comment");
+        Entity emailEntity = new Entity("email");
         long timestamp = System.currentTimeMillis();
-        commentEntity.setProperty("comment", comment);
-        commentEntity.setProperty("timestamp", timestamp);
-        datastore.put(commentEntity);
+        emailEntity.setProperty("email", address);
+        emailEntity.setProperty("message", message);
+        emailEntity.setProperty("timestamp", timestamp);
+        datastore.put(emailEntity);
 
-        response.sendRedirect("/index.html");
+            response.sendRedirect("/index.html");
+
   }
 }
 

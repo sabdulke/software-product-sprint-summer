@@ -19,8 +19,10 @@ var images = ["/images/blueflowers.jpg","/images/fluffy.jpg","/images/pinkflower
 function onLoadFuncs(){
     getJson();
     createMap();
-    initializeGallery();
-    showSlides(slideIndex);
+    // initializeGallery();
+    initializeAccordian();
+    initializeAnimate();
+    // showSlides(slideIndex);
 }
 
 /** Creates a map and adds it to the page. */
@@ -149,11 +151,80 @@ function openForm() {
 function closeForm() {
   document.getElementById("msgForm").style.display = "none";
 }
+var idName = "";
+function initializeAccordian(){
+    //slider width val formula: ( (Number of images - 1) * 50px ) + 335px
+ var wid = ((images.length-1)*50)+335;
+document.getElementById("ia-container").style.width = wid.toString()+ "px";
+    for (var i = 1, len = images.length; i < len; i++){
+    //     if (i = 0){
+    //         var div = document.getElementById("f0")
+    //         var img = document.createElement('img');
+    // img.src = images[i];
+    // var num = i < 10 ? "0"+i : i;
+    // img.alt = "image" + num;
+    // div.appendChild(img);
+    // var figcaption = document.createElement('figcaption');
+    // var span = document.createElement('span');
+    // span.innerHTML = images[i];
+    // figcaption.appendChild(span);
+    // div.appendChild(figcaption);
+    // continue;
 
+    //     }
+    var figure = document.createElement('figure');
+    // var div = document.createElement('div');
+    figure.id = "figure" + (i+1);
+    // figure.appendChild(div);
+    var img = document.createElement('img');
+    img.src = images[i];
+    img.className = "fig";
+    var num = i < 10 ? "0"+i : i;
+    img.alt = "image" + num;
+    figure.appendChild(img);
+    var input = document.createElement('input');
+    input.type = "radio";
+    input.name = "radio-set"
+    input.id = (i+1).toString();
+    input.className = "check"
+    if (i == len-1){
+        input.id = "ia-selector-last";
+    }
+    figure.appendChild(input);
+    // var figcaption = document.createElement('figcaption');
+    // var span = document.createElement('span');
+    // span.innerHTML = images[i];
+    // figcaption.appendChild(span);
+    // figure.appendChild(figcaption);
+    document.getElementById("figure"+i).appendChild(figure);
+    
+
+    }
+
+    
+    // //Automatically show next image in gallery every 5 seconds
+    var n = 1;
+    
+    setInterval(function(){var id = $('.check:checked').attr('id');
+                            document.getElementById(id).checked = false;
+                            if (id == "ia-selector-last"){
+                                document.getElementById("1").checked = true;
+                                return;
+                            }
+                            var next = parseInt(id)+1;
+                            var greaterThan = (next > images.length) ? 1 : next;
+                            var newId = (next == images.length) ? "ia-selector-last" : greaterThan;
+                            if (newId == "ia-selector-last"){
+                                document.getElementById(newId).checked = true;
+                                return;
+                            }
+                            document.getElementById(newId.toString()).checked = true;
+                        },5000);
+}
 
 //Slides
 function initializeGallery(){
-
+    
 for (var i = 0, len = images.length; i < len; i++){
     var mySlides = document.createElement('div');
     mySlides.className = "mySlides fade";
@@ -209,7 +280,56 @@ function showSlides(n) {
 
 
 
+function initializeAnimate(){
+var $cont = document.querySelector('.cont');
+var $elsArr = [].slice.call(document.querySelectorAll('.el'));
+var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
 
+setTimeout(function() {
+  $cont.classList.remove('s--inactive');
+}, 200);
 
+$elsArr.forEach(function($el) {
+  $el.addEventListener('click', function() {
+    if (this.classList.contains('s--active')) return;
+    $cont.classList.add('s--el-active');
+    this.classList.add('s--active');
+  });
+});
 
+$closeBtnsArr.forEach(function($btn) {
+  $btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    $cont.classList.remove('s--el-active');
+    document.querySelector('.el.s--active').classList.remove('s--active');
+  });
+});
+
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var parent = document.querySelector('.splitview'),
+        topPanel = parent.querySelector('.top'),
+        handle = parent.querySelector('.handle'),
+        skewHack = 0,
+        delta = 0;
+
+    // If the parent has .skewed class, set the skewHack var.
+    if (parent.className.indexOf('skewed') != -1) {
+        skewHack = 1000;
+    }
+
+    parent.addEventListener('mousemove', function(event) {
+        // Get the delta between the mouse position and center point.
+        delta = (event.clientX - window.innerWidth / 2) * 0.5;
+
+        // Move the handle.
+        handle.style.left = event.clientX + delta + 'px';
+
+        // Adjust the top panel width.
+        topPanel.style.width = event.clientX + skewHack + delta + 'px';
+    });
+    parent.addEventListener('mousedown', function(event) {
+        window.location.hash = "#act";
+    });
+});
 
