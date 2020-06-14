@@ -1,18 +1,360 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sarah Abdulkerim | Portfolio</title>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9bxbeKJgcnN8iVIWcrWTEITev5TbRQBI"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+  
+    <body onload = "onLoadFuncs()">
+    <!-- <div class="navbar">
+            <a href="#intro">Introduction</a>
+            <a href="#about">About</a>
+            <a href="#cs">Computer Science Portfolio</a>
+            <a href="#art">Art Portfolio</a>
+            <a href="#com">Comments</a>
+            <a href="#contact">Contact</a>
+    </div> -->
+
+    <!-- <div class = "main"> -->
+        
+        <div class="splitview skewed" id = "intro">
+        <div class="panel bottom">
+            <div class="content">
+                <div class="description">
+                    <h1>Wellesley College | Computer Science</h1>
+                </div>
+
+                <img src="/images/profile.jpg" alt="Original">
+            </div>
+        </div>
+
+        <div class="panel top">
+            <div class="content">
+                <div class="description">
+                    <h1>Sarah Abdulkerim</h1>
+                    <p><a href = "#act">Click Anywhere to Learn More About Me</a></p>
+                </div>
+
+                <img src="/images/image.jpg" alt="Duotone">
+            </div>
+        </div>
+
+        <div class="handle"></div>
     </div>
-  </body>
+    
+    <!-- <div class ="parallax">
+        
+
+        <div class = "caption">
+            <img src = "images/profile.jpg"></img>
+            <br><br><br>
+            <span class = "border">
+                Sarah Abdulkerim.<br><br><br>Wellesley College | Computer Science
+                <a href = "#act">Scroll Down</a>
+            </span>
+        </div>
+    </div> -->
+    
+    <div id = "wrapper">
+    <div class="background">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+    <div class="cont s--inactive" id = "act">
+  <!-- cont inner start -->
+  <div class="cont__inner">
+      
+    <!-- el start -->
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading">About</h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text">
+                <!-- <h3> -->
+            Welcome to my portfolio! <br>
+            I am Sarah Abdulkerim. <br>
+            I am studying Computer Science at Wellesley College.<br>
+        <!-- </h3> -->
+        <p> My name is Sarah Abdulkerim. I am studying Computer Science at Wellesley College.
+                I have experience programming in Python, C, and Java. As a hobby, I enjoy drawing with 
+                graphite and colored pencil media. I am passionate about software development and am interested 
+                in contributing and broadening both my back-end and front-end skills.  
+            </p>
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <div class="el__index-back">1</div>
+        <div class="el__index-front">
+          <div class="el__index-overlay" data-index="1">1</div>
+        </div>
+      </div>
+    </div>
+    <!-- el end -->
+    <!-- el start -->
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading">Computer Science Portfolio</h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text">
+                <!-- <h3> -->
+            Computer Science Portfolio
+            <h2> Coursework: </h2>
+            <p> Computer Programming & Problem Solving, Computation Structures, Real-Time Systems and Software, Data Structures, Combinatorics & Graph Theory, Introduction to Algorithms</p>
+            <p> Backend Programming Languages: Python, Java, Node.js, C </p>
+            <p> Frontend Programming Languages: HTML, CSS, Javascript </p>
+            Projects:
+            <div id = "maps"></div>
+        </h3>
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <div class="el__index-back">2</div>
+        <div class="el__index-front">
+          <div class="el__index-overlay" data-index="2">2</div>
+        </div>
+      </div>
+    </div>
+    <!-- el end -->
+    <!-- el start -->
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading">Art Portfolio</h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text">
+                <!-- <h3> -->
+            <!-- Art Portfolio -->
+    <!-- <section class = "this"> -->
+    <div class="ia-container" id ="ia-container">
+        <figure id="figure1" >
+            <img src="/images/blueflowers.jpg" alt="image00" class = "fig" />
+            <input class = "check" id = "1" type="radio" name="radio-set" checked="checked" />
+        </figure>
+    </div>
+        <!-- <       /h3> -->
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <div class="el__index-back">3</div>
+        <div class="el__index-front">
+          <div class="el__index-overlay" data-index="3">3</div>
+        </div>
+      </div>
+    </div>
+    <!-- el end -->
+    <!-- el start -->
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading">Comments</h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text">
+                <!-- <h3> -->
+            <!-- Comments -->
+
+            <!-- <div class = "up"><span><a href= "#">&#8593;</a></span></div> -->
+            <div class = "messagePopUp" id = "msgForm">
+                <form action = "/comment" method = "POST" class = "form-container">
+                    <label for = "msg"><b>Comments</b></label>
+                    <textarea name = "text-input"> Leave your comments here. </textarea>
+                    <button type = "submit" class = "btn" /> Send </button>
+                </form>
+            </div>
+
+            <ul id= "history"></ul>
+
+        <!-- </h3> -->
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <div class="el__index-back">4</div>
+        <div class="el__index-front">
+          <div class="el__index-overlay" data-index="4">4</div>
+        </div>
+      </div>
+    </div>
+    <!-- el end -->
+    <!-- el start -->
+    <div class="el">
+      <div class="el__overflow">
+        <div class="el__inner">
+          <div class="el__bg"></div>
+          <div class="el__preview-cont">
+            <h2 class="el__heading">Contact</h2>
+          </div>
+          <div class="el__content">
+            <div class="el__text">
+                
+        <!-- <h3> -->
+                Contact
+                <p> Email: abdulkerim.sarah@gmail.com </p>
+                <p>Please feel free to send a message below if interested in contacting:</p>
+                <div class = "messagePopUp" id = "email">
+                <form action = "/email" method = "POST" class = "form-container">
+                    <!-- <label for = "eml"><b>Please feel free to send a message below if interested in contacting:</b></label> -->
+                    <label for = "address"><b>Email Address:</b></label>
+                    <textarea name = "address" id = "address">Email Address</textarea>
+                    <label for = "message"><b>Message:</b></label>
+                    <textarea name = "message" id = "message">Message</textarea>
+                    <button type = "submit" class = "btn" /> Send </button>
+                </form>
+            </div>
+            <!-- </h3> -->
+            </div>
+            <div class="el__close-btn"></div>
+          </div>
+        </div>
+      </div>
+      <div class="el__index">
+        <div class="el__index-back">5</div>
+        <div class="el__index-front">
+          <div class="el__index-overlay" data-index="5">5</div>
+        </div>
+      </div>
+    </div>
+    <!-- el end -->
+  </div>
+  <!-- cont inner end -->
+</div>
+</div>
+
+    <!-- <div class = "info" id = "intro">
+        <h3>
+            Welcome to my portfolio! <br>
+            I am Sarah Abdulkerim. <br>
+            I am studying Computer Science at Wellesley College.<br>
+        </h3>
+    </div>
+
+    <div class="parallax2"></div>
+
+    <div class = "info" id = "about">
+        <h3>About </h3>
+            <p> My name is Sarah Abdulkerim. I am studying Computer Science at Wellesley College.
+                I have experience programming in Python, C, and Java. As a hobby, I enjoy drawing with 
+                graphite and colored pencil media. I am passionate about software development and am interested 
+                in contributing and broadening both my back-end and front-end skills.  
+            </p>
+    </div>
+
+    <div class="parallax3"></div>
+
+
+    <div class = "info" id ="cs">
+        <h3>
+            Computer Science Portfolio
+            <h2> Coursework: </h2>
+            <p> Computer Programming & Problem Solving, Computation Structures, Real-Time Systems and Software, Data Structures, Combinatorics & Graph Theory, Introduction to Algorithms</p>
+            <p> Backend Programming Languages: Python, Java, Node.js, C </p>
+            <p> Frontend Programming Languages: HTML, CSS, Javascript </p>
+            <h2> Projects: </h2>
+            <div id = "maps"></div>
+        </h3>
+    </div>
+
+
+    <div class="parallax4"></div>
+
+    <div class = "info" id ="art">
+        <h3>
+            Art Portfolio
+    <!-- <section class = "this"> -->
+    <!-- <div class="ia-container">
+        <figure id="figure1" >
+            <img src="/images/blueflowers.jpg" alt="image00" class = "fig" />
+            <input class = "check" id = "1" type="radio" name="radio-set" checked="checked" />
+        </figure>
+        		
+	
+</div>
+
+            
+
+
+        </h3>
+    </div> 
+
+    <div class="parallax5"></div>
+
+    <div class = "info" id ="com">
+        <h3>
+            Comments
+
+           
+            <!-- <div class = "messagePopUp" id = "msgForm">
+                <form action = "/comment" method = "POST" class = "form-container">
+                    <label for = "msg"><b>Comment here</b></label>
+                    <textarea name = "text-input"> Leave your comments here. </textarea>
+                    <button type = "submit" class = "btn" /> Send </button>
+                </form>
+            </div> --> -->
+
+            <!-- <ul id= "history"></ul>
+
+        </h3>
+    </div>
+
+    <div class="parallax6"></div>
+
+        <div class = "info" id ="contact">
+            <h3>
+                Contact
+                <p> Email: abdulkerim.sarah@gmail.com </p>
+            </h3>
+        </div>
+
+    </div>
+    </div> --> -->
+</body>
 </html>
