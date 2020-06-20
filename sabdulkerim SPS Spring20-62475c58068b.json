@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sabdulkerim-sps-spring20",
+  "private_key_id": "62475c58068be961d4e3e40d7db5aaf1e8b92b95",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCsk2q+7HQQDVDa\nbKsi5eUrk/HoL195NouTlvatFy0n/Gw+t20kiTEM/Vc3HLuOnrH/eJhCHPdXxDBQ\nbHzpkMHwgR2Fn8grSkFVqs8l5+QDEG8M7u5NzijFwQfonmrm0baynM1sF8Om+H2v\nS2CvtwEDZcO8qei1c3oXFLSeFJbRmxFoW2F4kBN6Ay9JqPtSZugNGgGQFKLNKkHP\nlW3nPHn6yqgnGQvp33JlIkDJY/7eDO7Jh0KuepXhOK1fGQyqUZ1WHQ0V0wYDbdei\nbg0sWJPtWg9JU8cVHMrPS0pWDdhc9khSO/DpBIJIcttW9CIdv2imhEnedY+zSTvS\no1XkEr6FAgMBAAECggEAE5e/AEMXIDVqzwmUWmdwX8Sxq7MpKzlSmmSCx/8AHPCP\nF4W6qfG7dGaUzsh/0L7apY769lKUkE3RUGgovFm3cwcto1yTHLsW9NNqJjsQC3sD\nqJu9yW6U+XKjY7kMmP0JOXkM529BQsUme87agMiNoGWe1d4ScftUyqcKpIHg55X8\nGiWPG2pWpM8JuMwB86Kv0o6fpBOG4xFQKY/335B2TCmHgMkIeqD7TG/Ak98UP9vk\nPQhkv2E7e1ELBSfcbLeUVUviFrKxxCpAkahLHFidGtDMJj2XGPNAlxW/fRw4wjnw\nswxxyVcjL166fBAnz5Rws0NnsNU5+MKsMOX3zNp1VwKBgQDcNeQlP/8+GRhG4ui8\nD/zYPJ4EOm++N5y8ZeHaMRbrK+Szu3Fu5oo5t3t7Y5+oU32xME5BlEr07Cpz6/wy\nNphO/UEwyZLTJmU3eYNDusKTwS2Z0wVv7b76vTQ9tAMlwsliK3/hetAqRiM29HQ+\nUDwa/hTcNwk9RoB+bO2jdKPUNwKBgQDIn6Gh26dIFYb03LR9IlwuJwA0xf342KNg\n4LDuD7Har96nqp30CcSqdnZGYeh14zPWQwfGxjNz3bos6z8RT2hqRacV0odejApo\nHXbugvzgjjwmOR+Wfo6iSA/WtLv/but6X72qdJbmVJRbQujm9cbeH3o3XrDq6gA4\nvc009jGdIwKBgQCPpN/DpLFc0oXRh6aFNnCapT/2RiAqFqC5DER9TdRDZ4hx7W2b\nB+tWpud3n47AAGZXNMl3YcJbbcprf54tKwvDStRBfNu3vK39t9f2UFcohrS2SL6d\nOpp/ePgg39HFygAPd4ydir1LNiE2cdN56mCqwt7cn1H5lImw7mE9ZJKRlQKBgQCR\n+w26X8EWA4wCykGOuBzI/Fn7DIJjuwcOrBAx+TuZ+9SQveZXN3Bh9PbU+dMTTLJg\nWr/i1D+GNLWOj9KBPv2kLnCIwXr8wfukjKQIo0lsADMmQPSKJiaVUMgtm68cC1LO\n5bF1wYY3rR2SVlpwDDCbWd4tQfqLxJ9KqlkSC35IbwKBgEU6rv86ap9WyXoVW/3o\nq0I3O4oSCAL24KCZSGBZv0XUic/vCsxH7pziRlu7H6+4mZJzR4j0KodPDwXBDlKw\nJOuQVw12abjNmXhp831lZZistuy5kjwwq4KTJ2IBsIpNXoX0ybmUXTR7ooK/6dCS\nigZQphrjHJjIxVibEhC4gstg\n-----END PRIVATE KEY-----\n",
+  "client_email": "translate@sabdulkerim-sps-spring20.iam.gserviceaccount.com",
+  "client_id": "101767582483194350574",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translate%40sabdulkerim-sps-spring20.iam.gserviceaccount.com"
+}
