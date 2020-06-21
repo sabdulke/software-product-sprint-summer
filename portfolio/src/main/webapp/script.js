@@ -12,17 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var slideIndex = 1;
+
 var images = ["/images/blueflowers.jpg","/images/fluffy.jpg","/images/pinkflowers.jpg","/images/pinkrose.jpg","/images/yellowflowers.jpg","/images/purpleback1.jpg"];
 
 //Onload Functions to be called
 function onLoadFuncs(){
     getJson();
     createMap();
-    // initializeGallery();
     initializeAccordian();
     initializeAnimate();
-    // showSlides(slideIndex);
+    splitView();
 }
 
 /** Creates a map and adds it to the page. */
@@ -96,31 +95,6 @@ function infoWindowMarker(map, marker, infowindow){
                         );
 }
 
-//Funtion for page tabs
-function openInfo(evt, info){
-    //Get all elements with tabcontent
-    var tabcontent = document.getElementsByClassName("tabcontent");
-
-    //Hide the content
-    for (var i = 0; i < tabcontent.length; i++){
-        tabcontent[i].style.display = "none";
-    }
-
-    //Get all elements with tablinks
-    var tablinks = document.getElementsByClassName("tablinks");
-
-    //And remove the class active (because inactive unless clicked)
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-
-    //Display the current tab
-    document.getElementById(info).style.display = "block";
-    //Mark as active
-    evt.currentTarget.classList.add("active");
-}
-
-
 function getJson(){
     fetch('/comment').then(response => response.json()).then((jsonObject) =>{
         const facts = document.getElementById("history");
@@ -130,81 +104,37 @@ function getJson(){
             liElement.innerText = jsonObject[str];
             facts.append(liElement);
         }
-    });
-    
+    });   
 }
 
-function openForm() {
-  const form = document.getElementById("msgForm");
-  const bton = document.getElementsByClassName("open-button")[0];
-  if (form.style.display == "block") {
-      form.style.display = "none";
-      bton.innerHTML = "Open Comment Box";
-
-      }
-  else{
-    form.style.display = "block";
-    bton.innerHTML = "Close Comment Box";
-  }
-}
-
-function closeForm() {
-  document.getElementById("msgForm").style.display = "none";
-}
 var idName = "";
 function initializeAccordian(){
     //slider width val formula: ( (Number of images - 1) * 50px ) + 335px
- var wid = ((images.length-1)*50)+335;
-document.getElementById("ia-container").style.width = wid.toString()+ "px";
+    var wid = ((images.length-1)*50)+335;
+    document.getElementById("ia-container").style.width = wid.toString()+ "px";
     for (var i = 1, len = images.length; i < len; i++){
-    //     if (i = 0){
-    //         var div = document.getElementById("f0")
-    //         var img = document.createElement('img');
-    // img.src = images[i];
-    // var num = i < 10 ? "0"+i : i;
-    // img.alt = "image" + num;
-    // div.appendChild(img);
-    // var figcaption = document.createElement('figcaption');
-    // var span = document.createElement('span');
-    // span.innerHTML = images[i];
-    // figcaption.appendChild(span);
-    // div.appendChild(figcaption);
-    // continue;
+        var figure = document.createElement('figure');
+        figure.id = "figure" + (i+1);
 
-    //     }
-    var figure = document.createElement('figure');
-    // var div = document.createElement('div');
-    figure.id = "figure" + (i+1);
-    // figure.appendChild(div);
-    var img = document.createElement('img');
-    img.src = images[i];
-    img.className = "fig";
-    var num = i < 10 ? "0"+i : i;
-    img.alt = "image" + num;
-    figure.appendChild(img);
-    var input = document.createElement('input');
-    input.type = "radio";
-    input.name = "radio-set"
-    input.id = (i+1).toString();
-    input.className = "check"
-    if (i == len-1){
-        input.id = "ia-selector-last";
-    }
-    figure.appendChild(input);
-    // var figcaption = document.createElement('figcaption');
-    // var span = document.createElement('span');
-    // span.innerHTML = images[i];
-    // figcaption.appendChild(span);
-    // figure.appendChild(figcaption);
-    document.getElementById("figure"+i).appendChild(figure);
-    
+        var img = document.createElement('img');
+        img.src = images[i];
+        img.className = "fig";
+        var num = i < 10 ? "0"+i : i;
+        img.alt = "image" + num;
+        figure.appendChild(img);
 
+        var input = document.createElement('input');
+        input.type = "radio";
+        input.name = "radio-set"
+        input.id = (i+1).toString();
+        input.className = "check"
+        if (i == len-1) { input.id = "ia-selector-last"; }
+        figure.appendChild(input);
+
+        document.getElementById("figure"+i).appendChild(figure);
     }
 
-    
-    // //Automatically show next image in gallery every 5 seconds
-    var n = 1;
-    
+    //Automatically show next image in gallery every 5 seconds    
     setInterval(function(){var id = $('.check:checked').attr('id');
                             document.getElementById(id).checked = false;
                             if (id == "ia-selector-last"){
@@ -222,91 +152,38 @@ document.getElementById("ia-container").style.width = wid.toString()+ "px";
                         },5000);
 }
 
-//Slides
-function initializeGallery(){
-    
-for (var i = 0, len = images.length; i < len; i++){
-    var mySlides = document.createElement('div');
-    mySlides.className = "mySlides fade";
-    
-    var numbertext = document.createElement('div');
-    numbertext.className = "numbertext";
-    numbertext.innerHTML = (i+1) + " / " + len;
-    mySlides.appendChild(numbertext);
-
-    var img = document.createElement('img');
-    img.src = images[i];
-    img.style.width = "50%";
-    mySlides.appendChild(img);
-    document.getElementsByClassName("slideshow-container")[0].appendChild(mySlides)
-
-    dot = document.createElement('span');
-    dot.className = "dot";
-    dot.onclick = function(){currentSlide(i+1);}
-    document.getElementById("show").appendChild(dot);
-
-    }
-    //Automatically show next image in gallery every 5 seconds
-    setInterval(function(){plusSlides(1);},5000);
-}
-
-
-
-    // Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-
-
-
 function initializeAnimate(){
-var $cont = document.querySelector('.cont');
-var $elsArr = [].slice.call(document.querySelectorAll('.el'));
-var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+    var $cont = document.querySelector('.cont');
+    var $elsArr = [].slice.call(document.querySelectorAll('.el'));
+    var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
 
-setTimeout(function() {
-  $cont.classList.remove('s--inactive');
-}, 200);
+    setTimeout(function() {
+                        $cont.classList.remove('s--inactive');
+                }, 200);
 
-$elsArr.forEach(function($el) {
-  $el.addEventListener('click', function() {
-    if (this.classList.contains('s--active')) return;
-    $cont.classList.add('s--el-active');
-    this.classList.add('s--active');
-  });
-});
+    var flag = false;
+    $elsArr.forEach(function($el) {
+        $el.addEventListener('click', function() {
+            if (!flag){
+                flag = true;
+                if (this.classList.contains('s--active')) return;
+                $cont.classList.add('s--el-active');
+                this.classList.add('s--active');
+            }
+        });
+    });
 
-$closeBtnsArr.forEach(function($btn) {
-  $btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    $cont.classList.remove('s--el-active');
-    document.querySelector('.el.s--active').classList.remove('s--active');
-  });
-});
-
+    $closeBtnsArr.forEach(function($btn) {
+        $btn.addEventListener('click', function(e) {
+            flag = false;
+            e.stopPropagation();
+            $cont.classList.remove('s--el-active');
+            document.querySelector('.el.s--active').classList.remove('s--active');
+        });
+    });
 }
-document.addEventListener('DOMContentLoaded', function() {
+
+function splitView () {
     var parent = document.querySelector('.splitview'),
         topPanel = parent.querySelector('.top'),
         handle = parent.querySelector('.handle'),
@@ -331,5 +208,21 @@ document.addEventListener('DOMContentLoaded', function() {
     parent.addEventListener('mousedown', function(event) {
         window.location.hash = "#act";
     });
-});
+}
 
+function requestTranslation($val) {
+        const languageCode = $val;
+        var allContent = document.documentElement.innerHTML;
+        const params = new URLSearchParams();
+        params.append('text', allContent);
+        params.append('languageCode', languageCode);
+        fetch('/translate', {
+          method: 'POST',
+          body: params
+        }).then(response => response.json()).then((jsonObject) =>{
+        for (str in jsonObject){
+            document.documentElement.innerHTML = (jsonObject[str]);
+        }
+        onLoadFuncs();
+      });
+}
