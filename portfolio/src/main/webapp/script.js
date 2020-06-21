@@ -22,6 +22,7 @@ function onLoadFuncs(){
     initializeAccordian();
     initializeAnimate();
     splitView();
+    window.sessionStorage.setItem("english",document.documentElement.innerHTML);
 }
 
 /** Creates a map and adds it to the page. */
@@ -104,6 +105,8 @@ function getJson(){
             liElement.innerText = jsonObject[str];
             facts.append(liElement);
         }
+        window.sessionStorage.setItem("history",facts.innerHTML);
+
     });   
 }
 
@@ -205,24 +208,48 @@ function splitView () {
         // Adjust the top panel width.
         topPanel.style.width = event.clientX + skewHack + delta + 'px';
     });
-    parent.addEventListener('mousedown', function(event) {
-        window.location.hash = "#act";
-    });
 }
 
 function requestTranslation($val) {
         const languageCode = $val;
-        var allContent = document.documentElement.innerHTML;
+        var allContent = window.sessionStorage.getItem("english");
         const params = new URLSearchParams();
         params.append('text', allContent);
+        params.append('com', window.sessionStorage.getItem("history"));
         params.append('languageCode', languageCode);
+
         fetch('/translate', {
           method: 'POST',
           body: params
         }).then(response => response.json()).then((jsonObject) =>{
-        for (str in jsonObject){
-            document.documentElement.innerHTML = (jsonObject[str]);
+        for (idx in jsonObject){
+            if (idx == 1) {
+                document.getElementById("history").innerHTML = (jsonObject[idx]);
+                break;
+            }
+            document.documentElement.innerHTML = (jsonObject[idx]);
         }
-        onLoadFuncs();
-      });
+        createMap();
+        initializeAccordian();
+        initializeAnimate();
+        splitView();
+        });  
+
+      }
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+        window.location.hash = "#";
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        window.location.hash = "#act";
+    }
+
 }

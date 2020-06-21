@@ -35,12 +35,16 @@ public class TranslationServlet extends HttpServlet {
     // Get the request parameters.
     String originalText = request.getParameter("text");
     String languageCode = request.getParameter("languageCode");
+    String comments = request.getParameter("com");
     ArrayList<String> translatedText = new ArrayList<String>();
    
     // Do the translation.
     Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translation translation = translate.translate(originalText, Translate.TranslateOption.targetLanguage(languageCode));
     translatedText.add(translation.getTranslatedText());
+    translation = translate.translate(comments, Translate.TranslateOption.targetLanguage(languageCode));
+    translatedText.add(translation.getTranslatedText());
+
     
     // Output the translation.
     response.setContentType("application/json");
